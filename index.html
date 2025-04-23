@@ -3,215 +3,313 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alex Hernandez | Houston TX Realtor® - Top Real Estate Expert</title>
-    <meta name="description" content="Alex Hernandez - Premier Houston Realtor® with 15+ years experience. Specializing in luxury homes, investment properties, and residential real estate in Greater Houston Area.">
+    <title>Alex Hernandez | Premier Houston Realtor® - Luxury Home Specialist</title>
+    <meta name="description" content="Alex Hernandez - Award-winning Houston Realtor® with 15+ years experience in luxury homes and investment properties. Top 1% in Harris County real estate transactions.">
     
-    <!-- Schema Markup -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "RealEstateAgent",
-        "name": "Alex Hernandez Real Estate",
-        "email": "Hernandez.alexcy@gmail.com",
-        "telephone": "+1-281-989-0245",
-        "image": "img/alex-hernandez-profile.jpg",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Houston",
-            "addressRegion": "TX",
-            "postalCode": "77002"
-        }
-    }
-    </script>
+    <!-- Fuentes y Iconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* Estilos Base */
+        :root {
+            --primary: #004488;
+            --secondary: #cda856;
+            --dark: #002244;
+            --light: #f9fbfd;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Helvetica Neue', sans-serif;
         }
 
         body {
-            background: #f9fbfd;
-            line-height: 1.6;
+            font-family: 'Raleway', sans-serif;
+            background: var(--light);
             color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes parallax {
+            from { transform: translateY(-30px); }
+            to { transform: translateY(30px); }
         }
 
         /* Header */
         header {
-            background: linear-gradient(135deg, #002244, #004488);
+            background: linear-gradient(135deg, var(--dark), var(--primary));
             color: white;
+            padding: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 2rem;
-            text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
         .realtor-info {
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 2rem;
-            margin-bottom: 1rem;
+            animation: fadeIn 1s ease-out;
         }
 
         .realtor-photo {
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             border: 3px solid white;
             object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        /* Formulario Mejorado */
-        .form-container {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            margin: 3rem auto;
-            max-width: 700px;
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        input, select, textarea {
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 15px;
-            border: 2px solid #e3e8ee;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: all 0.3s ease;
+            height: 100%;
+            background: rgba(0,34,68,0.5);
         }
 
-        input:focus, textarea:focus {
-            border-color: #004488;
-            box-shadow: 0 0 8px rgba(0,68,136,0.1);
-        }
-
-        button {
-            background: linear-gradient(135deg, #004488, #002244);
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
             color: white;
-            padding: 18px 35px;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            cursor: pointer;
+            padding: 2rem;
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+        }
+
+        .hero-slider {
+            position: absolute;
             width: 100%;
-            transition: transform 0.3s ease;
+            height: 100%;
+            display: flex;
+            transition: transform 1s ease-in-out;
         }
 
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,68,136,0.2);
+        .hero-slide {
+            flex: 0 0 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            animation: parallax 20s ease-in-out infinite alternate;
         }
 
-        /* Instagram Feed */
-        .instagram-section {
-            padding: 4rem 0;
-            background: #f5f8fa;
+        /* Secciones */
+        .section {
+            padding: 5rem 2rem;
+            position: relative;
         }
 
-        .ig-grid {
+        .section-dark {
+            background: var(--dark);
+            color: white;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+        }
+
+        /* Galería Instagram */
+        .instagram-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
-            margin: 2rem 0;
+            margin: 3rem 0;
         }
 
         .ig-post {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            position: relative;
+            border-radius: 15px;
             overflow: hidden;
+            transform: scale(0.95);
+            transition: all 0.3s ease;
+            min-height: 500px;
         }
 
-        /* SEO Content */
-        .seo-content {
-            padding: 4rem 0;
+        .ig-post:hover {
+            transform: scale(1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Formulario de Contacto */
+        .contact-form {
             background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 2rem auto;
+            position: relative;
+            z-index: 1;
         }
 
-        .neighborhoods {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e3e8ee;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 15px rgba(205,168,86,0.2);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,68,136,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
         }
 
         @media (max-width: 768px) {
             .realtor-info {
                 flex-direction: column;
+                text-align: center;
             }
             
-            .realtor-photo {
-                width: 120px;
-                height: 120px;
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+            
+            .ig-post {
+                min-height: 400px;
             }
         }
     </style>
-    
-    <!-- Instagram Embed Script -->
-    <script async src="//www.instagram.com/embed.js"></script>
 </head>
 <body>
     <header>
-        <div class="realtor-info">
-            <img src="profile.jpg" alt="Alex Hernandez - Houston Realtor" class="realtor-photo">
-            <div>
-                <h1>Alex Hernandez</h1>
-                <p>Licensed Texas Realtor® | TREC #12345</p>
-                <p><i class="fas fa-phone"></i> <a href="tel:281-989-0245">(281) 989-0245</a></p>
+        <div class="header-content">
+            <div class="realtor-info">
+                <img src="./src/435779025_26022025374051350_1015491205155458787_n.webp" 
+                     alt="Alex Hernandez - Houston Realtor" 
+                     class="realtor-photo">
+                <div>
+                    <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Alex Hernandez</h1>
+                    <p style="font-size: 1.2rem;">Licensed Texas Realtor® | TREC #12345</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="tel:281-989-0245" style="color: white; text-decoration: none;">
+                            <i class="fas fa-phone"></i> (281) 989-0245
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
-    <section class="seo-content">
-        <div class="container">
-            <h2>Houston Real Estate Market Leader</h2>
-            <p>With over 15 years of dedicated service in the Houston area real estate market, I bring unparalleled expertise to both buyers and sellers. Specializing in luxury properties, investment opportunities, and family homes across Houston's most desirable neighborhoods including:</p>
-            
-            <div class="neighborhoods">
-                <div>The Heights</div>
-                <div>River Oaks</div>
-                <div>Memorial</div>
-                <div>Katy</div>
-                <div>Sugar Land</div>
-                <div>The Woodlands</div>
-            </div>
-
-            <h3>Why Choose Alex Hernandez?</h3>
-            <ul>
-                <li>🏆 Top 1% of Houston Realtors®</li>
-                <li>🔑 500+ Successful Transactions</li>
-                <li>📈 98% Client Satisfaction Rate</li>
-                <li>🏡 Local Market Expert Since 2008</li>
-            </ul>
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1605146769289-440113cc3d00')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1565538810643-b5bdb714032a')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf')"></div>
+        </div>
+        <div class="hero-content">
+            <h2>Luxury Houston Real Estate</h2>
+            <p>Experience the Difference with a Top 1% Realtor®</p>
         </div>
     </section>
 
-    <section class="instagram-section">
+    <section class="section">
         <div class="container">
-            <h2>Latest Houston Listings</h2>
-            <div class="ig-grid">
-                <!-- Instagram Posts -->
+            <h2 class="section-title">Featured Listings</h2>
+            <div class="instagram-grid">
                 <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DIzd7I0JyKD/" data-instgrm-version="14"></blockquote>
                 <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DGYwbAzpG34/" data-instgrm-version="14"></blockquote>
             </div>
         </div>
     </section>
 
-    <section class="seo-content">
+    <section class="section section-dark">
         <div class="container">
-            <h2>Houston Home Buying Process</h2>
+            <h2 class="section-title">Why Choose Us</h2>
             <p>As your dedicated Houston buyer's agent, I provide comprehensive services including:</p>
             <ul>
                 <li>Customized property searches</li>
@@ -222,29 +320,28 @@
         </div>
     </section>
 
-    <div class="container">
-        <div class="form-container">
+    <section class="section">
+        <div class="contact-form">
+            <h2 class="section-title">Schedule Your Consultation</h2>
             <form id="contactForm" action="mailto:Hernandez.alexcy@gmail.com" method="post" enctype="text/plain">
-                <h3>Schedule Your Free Consultation</h3>
+                <div class="form-group">
+                    <label class="form-label">Full Name *</label>
+                    <input type="text" class="form-input" name="name" required>
+                </div>
                 
                 <div class="form-group">
-                    <label>Full Name *</label>
-                    <input type="text" name="name" required>
+                    <label class="form-label">Email *</label>
+                    <input type="email" class="form-input" name="email" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Email *</label>
-                    <input type="email" name="email" required>
+                    <label class="form-label">Phone *</label>
+                    <input type="tel" class="form-input" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Phone *</label>
-                    <input type="tel" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
-                </div>
-
-                <div class="form-group">
-                    <label>How Can We Help? *</label>
-                    <select name="service" required>
+                    <label class="form-label">How Can We Help? *</label>
+                    <select class="form-input" name="service" required>
                         <option value="buying">Buy a Home</option>
                         <option value="selling">Sell a Home</option>
                         <option value="investing">Investment Property</option>
@@ -253,38 +350,57 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Message</label>
-                    <textarea name="message" rows="4" placeholder="Tell us about your real estate needs..."></textarea>
+                    <label class="form-label">Message</label>
+                    <textarea class="form-input" rows="4" name="message"></textarea>
                 </div>
 
-                <button type="submit">
+                <button type="submit" class="submit-btn">
                     <i class="fas fa-paper-plane"></i> Send Message
                 </button>
             </form>
         </div>
-    </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Alex Hernandez - Houston Real Estate Expert</p>
+        <p>TREC License #12345 | Serving Greater Houston Area</p>
+        <p><i class="fas fa-phone"></i> (281) 989-0245</p>
+    </footer>
 
     <script>
-        // Instagram Auto-Refresh
-        const instagramPosts = [
-            'https://www.instagram.com/p/DIzd7I0JyKD/',
-            'https://www.instagram.com/reel/DGYwbAzpG34/'
-        ];
-
+        // Inicializar Instagram Feed
         const loadInstagram = () => {
-            const container = document.querySelector('.ig-grid');
-            container.innerHTML = instagramPosts.map(post => `
-                <blockquote class="instagram-media" data-instgrm-permalink="${post}" data-instgrm-version="14"></blockquote>
-            `).join('');
-            
             if(window.instgrm) {
                 window.instgrm.Embeds.process();
             }
         }
 
-        // Actualizar cada 6 horas
+        // Cargar y actualizar cada hora
         loadInstagram();
-        setInterval(loadInstagram, 21600000);
+        setInterval(loadInstagram, 3600000);
+
+        // Slider Hero
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            document.querySelector('.hero-slider').style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+        setInterval(nextSlide, 5000);
+
+        // Animación al hacer scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section, .ig-post').forEach(el => observer.observe(el));
     </script>
+    <script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>
