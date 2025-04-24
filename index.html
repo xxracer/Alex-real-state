@@ -3,10 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alex Hernandez | Premier Houston Realtor® - Luxury Home Specialist</title>
-    <meta name="description" content="Alex Hernandez - Award-winning Houston Realtor® with 15+ years experience in luxury homes and investment properties. Top 1% in Harris County real estate transactions.">
+    <title>Luxury Texas Apartments | Premium Rentals & Investment Opportunities | Alex Hernandez Realtor®</title>
+    <meta name="description" content="Exclusive Luxury Apartments in Texas for Oil Executives & Private Clients. Best High-End Rentals in Houston. Premium Corporate Housing Solutions & Real Estate Investments.">
     
-    <!-- Fuentes y Iconos -->
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "RealEstateAgent",
+        "name": "Luxury Texas Apartments",
+        "image": "./src/435779025_26022025374051350_1015491205155458787_n.webp",
+        "email": "Hernandez.alexcy@gmail.com",
+        "telephone": "+1-281-989-0245",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Houston",
+            "addressRegion": "TX"
+        },
+        "priceRange": "$3,000 - $15,000/month",
+        "sameAs": ["https://www.instagram.com/key.2homes/"]
+    }
+    </script>
+
+    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -32,39 +51,31 @@
             overflow-x: hidden;
         }
 
-        /* Animaciones */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes parallax {
-            from { transform: translateY(-30px); }
-            to { transform: translateY(30px); }
-        }
-
-        /* Header */
+        /* Header Animation */
         header {
             background: linear-gradient(135deg, var(--dark), var(--primary));
             color: white;
             padding: 1rem;
             position: relative;
-            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .header-content {
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
-            position: relative;
-            z-index: 1;
         }
 
         .realtor-info {
             display: flex;
             align-items: center;
             gap: 2rem;
-            animation: fadeIn 1s ease-out;
         }
 
         .realtor-photo {
@@ -74,15 +85,31 @@
             border: 3px solid white;
             object-fit: cover;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
         }
 
-        /* Hero Section */
+        .realtor-photo:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        .luxury-badge {
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        /* Hero Parallax Effect */
         .hero {
             height: 80vh;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: url('https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf') center/cover fixed;
         }
 
         .hero::before {
@@ -101,39 +128,33 @@
             text-align: center;
             color: white;
             padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .hero-content h2 {
             font-size: 3rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+            animation: textGlow 2s ease-in-out infinite alternate;
         }
 
-        .hero-content p {
-            font-size: 1.5rem;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+        @keyframes textGlow {
+            from { text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+            to { text-shadow: 0 0 20px rgba(255,255,255,0.6); }
         }
 
-        .hero-slider {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            transition: transform 1s ease-in-out;
-        }
-
-        .hero-slide {
-            flex: 0 0 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            animation: parallax 20s ease-in-out infinite alternate;
-        }
-
-        /* Secciones */
+        /* Sections */
         .section {
             padding: 5rem 2rem;
-            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease;
+        }
+
+        .section.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .section-dark {
@@ -159,29 +180,35 @@
             background: var(--secondary);
         }
 
-        /* Galería Instagram */
-        .instagram-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+        /* Investment CTA */
+        .investment-cta {
+            background: linear-gradient(rgba(0,68,136,0.9), rgba(0,68,136,0.9)),
+                        url('https://images.unsplash.com/photo-1605276373954-0c4a0dac5b12') center/cover;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
             margin: 3rem 0;
-        }
-
-        .ig-post {
             position: relative;
-            border-radius: 15px;
             overflow: hidden;
-            transform: scale(0.95);
-            transition: all 0.3s ease;
-            min-height: 500px;
         }
 
-        .ig-post:hover {
-            transform: scale(1);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Formulario de Contacto */
+        .cta-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+        }
+
+        /* Form Styles */
         .contact-form {
             background: white;
             padding: 3rem;
@@ -189,22 +216,19 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             max-width: 800px;
             margin: 2rem auto;
-            position: relative;
-            z-index: 1;
         }
 
         .form-group {
-            margin-bottom: 2rem;
-            position: relative;
+            margin-bottom: 1.5rem;
         }
 
         .form-input {
             width: 100%;
-            padding: 1rem;
+            padding: 12px;
             border: 2px solid #e3e8ee;
             border-radius: 8px;
             font-size: 1rem;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
 
         .form-input:focus {
@@ -212,23 +236,16 @@
             box-shadow: 0 0 15px rgba(205,168,86,0.2);
         }
 
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--dark);
-        }
-
         .submit-btn {
             background: linear-gradient(135deg, var(--primary), var(--dark));
             color: white;
-            padding: 1.2rem 2.5rem;
+            padding: 15px 30px;
             border: none;
             border-radius: 8px;
             font-size: 1.1rem;
             cursor: pointer;
             width: 100%;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
 
         .submit-btn:hover {
@@ -242,11 +259,20 @@
             color: white;
             padding: 3rem 2rem;
             text-align: center;
-            margin-top: 4rem;
         }
 
-        footer p {
-            margin: 0.5rem 0;
+        .seo-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .seo-links a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 2px solid var(--secondary);
         }
 
         @media (max-width: 768px) {
@@ -258,10 +284,6 @@
             .hero-content h2 {
                 font-size: 2rem;
             }
-            
-            .ig-post {
-                min-height: 400px;
-            }
         }
     </style>
 </head>
@@ -270,11 +292,12 @@
         <div class="header-content">
             <div class="realtor-info">
                 <img src="./src/435779025_26022025374051350_1015491205155458787_n.webp" 
-                     alt="Alex Hernandez - Houston Realtor" 
+                     alt="Alex Hernandez - Texas Luxury Apartment Expert" 
                      class="realtor-photo">
                 <div>
-                    <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Alex Hernandez</h1>
-                    <p style="font-size: 1.2rem;">Licensed Texas Realtor® | TREC #12345</p>
+                    <h1>Alex Hernandez</h1>
+                    <div class="luxury-badge">TOP 1% LUXURY SPECIALIST</div>
+                    <p>Licensed Texas Realtor® | TREC #12345</p>
                     <div style="margin-top: 1rem;">
                         <a href="tel:281-989-0245" style="color: white; text-decoration: none;">
                             <i class="fas fa-phone"></i> (281) 989-0245
@@ -286,120 +309,162 @@
     </header>
 
     <section class="hero">
-        <div class="hero-slider">
-            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1605146769289-440113cc3d00')"></div>
-            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1565538810643-b5bdb714032a')"></div>
-            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf')"></div>
-        </div>
         <div class="hero-content">
-            <h2>Luxury Houston Real Estate</h2>
-            <p>Experience the Difference with a Top 1% Realtor®</p>
+            <h2>Premium Luxury Living in Texas</h2>
+            <p>Experience Unmatched Quality in Executive Rentals & Private Residences</p>
         </div>
     </section>
 
     <section class="section">
         <div class="container">
-            <h2 class="section-title">Featured Listings</h2>
-            <div class="instagram-grid">
-                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DIzd7I0JyKD/" data-instgrm-version="14"></blockquote>
-                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DGYwbAzpG34/" data-instgrm-version="14"></blockquote>
+            <h2 class="section-title">Our Exclusive Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Corporate Housing Solutions</h3>
+                    <p>Premium temporary housing for oil & gas professionals:</p>
+                    <ul>
+                        <li>Fully furnished luxury apartments</li>
+                        <li>Flexible lease terms (1-24 months)</li>
+                        <li>24/7 concierge services</li>
+                        <li>Strategic Energy Corridor locations</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Private Luxury Rentals</h3>
+                    <p>Exclusive residences for discerning individuals:</p>
+                    <ul>
+                        <li>High-rise penthouses with panoramic views</li>
+                        <li>Smart home technology integration</li>
+                        <li>Resort-style amenities</li>
+                        <li>Private parking & security</li>
+                    </ul>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <section class="investment-cta">
+        <div class="cta-overlay"></div>
+        <div class="cta-content">
+            <h2>First Access to Elite Investment Opportunities</h2>
+            <p>Join our VIP Investor Network to receive:</p>
+            <ul>
+                <li>Pre-market luxury property alerts</li>
+                <li>Detailed ROI analysis reports</li>
+                <li>Exclusive virtual tours</li>
+                <li>Priority negotiation assistance</li>
+            </ul>
+            <a href="#contact" class="submit-btn" style="width: auto; margin-top: 2rem;">
+                <i class="fas fa-star"></i> Join VIP Investor List
+            </a>
         </div>
     </section>
 
     <section class="section section-dark">
         <div class="container">
-            <h2 class="section-title">Why Choose Us</h2>
-            <p>As your dedicated Houston buyer's agent, I provide comprehensive services including:</p>
-            <ul>
-                <li>Customized property searches</li>
-                <li>Neighborhood market analysis</li>
-                <li>Expert negotiation strategies</li>
-                <li>Closing cost optimization</li>
-            </ul>
+            <h2 class="section-title">Why Choose Our Services</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Industry Expertise</h3>
+                    <p>15+ years specializing in luxury Texas rentals</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Exclusive Network</h3>
+                    <p>Access to unlisted premium properties</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Full Service</h3>
+                    <p>From property selection to move-in coordination</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="section">
-        <div class="contact-form">
-            <h2 class="section-title">Schedule Your Consultation</h2>
-            <form id="contactForm" action="mailto:Hernandez.alexcy@gmail.com" method="post" enctype="text/plain">
-                <div class="form-group">
-                    <label class="form-label">Full Name *</label>
-                    <input type="text" class="form-input" name="name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Email *</label>
-                    <input type="email" class="form-input" name="email" required>
-                </div>
+    <section id="contact" class="contact-form">
+        <h2 class="section-title">Get Personalized Assistance</h2>
+        <form action="mailto:Hernandez.alexcy@gmail.com" method="post" enctype="text/plain">
+            <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" class="form-input" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Email *</label>
+                <input type="email" class="form-input" name="email" required>
+            </div>
 
-                <div class="form-group">
-                    <label class="form-label">Phone *</label>
-                    <input type="tel" class="form-input" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
-                </div>
+            <div class="form-group">
+                <label>Phone *</label>
+                <input type="tel" class="form-input" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+            </div>
 
-                <div class="form-group">
-                    <label class="form-label">How Can We Help? *</label>
-                    <select class="form-input" name="service" required>
-                        <option value="buying">Buy a Home</option>
-                        <option value="selling">Sell a Home</option>
-                        <option value="investing">Investment Property</option>
-                        <option value="consultation">Free Market Analysis</option>
-                    </select>
-                </div>
+            <div class="form-group">
+                <label>Service Needed *</label>
+                <select class="form-input" name="service" required>
+                    <option value="corporate">Corporate Housing</option>
+                    <option value="private">Private Rental</option>
+                    <option value="investment">Investment Opportunity</option>
+                    <option value="vip">VIP Investor List</option>
+                </select>
+            </div>
 
-                <div class="form-group">
-                    <label class="form-label">Message</label>
-                    <textarea class="form-input" rows="4" name="message"></textarea>
-                </div>
+            <div class="form-group">
+                <label>Message</label>
+                <textarea class="form-input" rows="4" name="message" placeholder="Tell us about your specific needs..."></textarea>
+            </div>
 
-                <button type="submit" class="submit-btn">
-                    <i class="fas fa-paper-plane"></i> Send Message
-                </button>
-            </form>
-        </div>
+            <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i> Submit Request
+            </button>
+        </form>
     </section>
 
     <footer>
-        <p>© 2024 Alex Hernandez - Houston Real Estate Expert</p>
-        <p>TREC License #12345 | Serving Greater Houston Area</p>
-        <p><i class="fas fa-phone"></i> (281) 989-0245</p>
+        <div class="seo-links">
+            <a href="/luxury-apartments-houston">Houston Luxury Apartments</a>
+            <a href="/executive-rentals-texas">Texas Executive Rentals</a>
+            <a href="/oil-industry-housing">Oil Industry Housing</a>
+            <a href="/luxury-investment-properties">Luxury Investment Properties</a>
+        </div>
+        <p>© 2024 Texas Elite Living - Alex Hernandez Realtor®</p>
+        <p>TREC License #12345 | Serving Houston, Dallas, Austin & Surrounding Areas</p>
+        <p><i class="fas fa-phone"></i> (281) 989-0245 | <i class="fas fa-envelope"></i> Hernandez.alexcy@gmail.com</p>
     </footer>
 
     <script>
-        // Inicializar Instagram Feed
-        const loadInstagram = () => {
-            if(window.instgrm) {
-                window.instgrm.Embeds.process();
-            }
-        }
-
-        // Cargar y actualizar cada hora
-        loadInstagram();
-        setInterval(loadInstagram, 3600000);
-
-        // Slider Hero
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.hero-slide');
-        
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            document.querySelector('.hero-slider').style.transform = `translateX(-${currentSlide * 100}%)`;
-        }
-        setInterval(nextSlide, 5000);
-
-        // Animación al hacer scroll
+        // Intersection Observer for Scroll Effects
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('active');
                 }
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.section, .ig-post').forEach(el => observer.observe(el));
+        document.querySelectorAll('.section').forEach(el => observer.observe(el));
+
+        // Instagram Feed Initialization
+        const instagramPosts = [
+            'https://www.instagram.com/p/DIzd7I0JyKD/',
+            'https://www.instagram.com/reel/DGYwbAzpG34/'
+        ];
+
+        const loadInstagram = () => {
+            const container = document.createElement('div');
+            container.className = 'instagram-grid';
+            instagramPosts.forEach(post => {
+                container.innerHTML += `
+                    <blockquote class="instagram-media" data-instgrm-permalink="${post}" data-instgrm-version="14"></blockquote>
+                `;
+            });
+            document.querySelector('section.section').appendChild(container);
+            if(window.instgrm) window.instgrm.Embeds.process();
+        }
+
+        window.onload = () => {
+            loadInstagram();
+            setInterval(() => window.instgrm.Embeds.process(), 3600000);
+        }
     </script>
     <script async src="//www.instagram.com/embed.js"></script>
 </body>
